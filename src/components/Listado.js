@@ -1,43 +1,36 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
-export const Listado = () => {
+export const Listado = ({listadoState, setListadoState}) => {
+
+    // const [listadoState, setListadoState] = useState([]);
+
+    const conseguirPeliculas = () => {
+        let peliculas = JSON.parse(localStorage.getItem("peliculas"));
+        setListadoState(peliculas);
+    };
+
+    useEffect(() => {
+        console.log("Componentes de listado de peliculas cargado");
+        conseguirPeliculas()
+    }, []);
+
+
   return (
     <>
         {/* Aqui van las peliculas */}
-        <article className="peli-item">
-            <h3 className="title">Desarrollo web</h3>
-            <p className="description">victorrobles.web</p>
+        {listadoState != null ? listadoState.map(pelicula => {
 
-            <button className="edit">Editar</button>
-            <button className="delete">Borrar</button>
-        </article>
-
-
-        <article className="peli-item">
-            <h3 className="title">Desarrollo web</h3>
-            <p className="description">victorrobles.web</p>
-
-            <button className="edit">Editar</button>
-            <button className="delete">Borrar</button>
-        </article>
-
-
-        <article className="peli-item">
-            <h3 className="title">Desarrollo web</h3>
-            <p className="description">victorrobles.web</p>
-
-            <button className="edit">Editar</button>
-            <button className="delete">Borrar</button>
-        </article>
-
-
-        <article className="peli-item">
-            <h3 className="title">Desarrollo web</h3>
-            <p className="description">victorrobles.web</p>
-
-            <button className="edit">Editar</button>
-            <button className="delete">Borrar</button>
-        </article>
+            return (
+                <article key={pelicula.id} className="peli-item">
+                <h3 className="title">{pelicula.titulo}</h3>
+                <p className="description">{pelicula.descripcion}</p>
+    
+                <button className="edit">Editar</button>
+                <button className="delete">Borrar</button>
+            </article>
+            );
+        }) : <p>No Hay peliculas para mostar</p>
+    }
     </>
   )
 }

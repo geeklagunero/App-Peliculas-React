@@ -1,9 +1,18 @@
 import { Buscador } from "./components/Buscador";
 import { Crear } from "./components/Crear";
 import { Listado } from "./components/Listado";
+import {useState} from 'react';
 
 
 function App() {
+
+    //pasamos este state por props a los componentes que lo neceseciten 
+    //tanto la variable como la funcion que modifica el state
+    const [listadoState, setListadoState] = useState([]);
+
+
+
+
   return (
     <div className="layout">
     {/* cabezera */}
@@ -27,13 +36,13 @@ function App() {
     {/* contenido principal */}
     <section className="content">
         {/* Aqui van las peliculas */}
-       <Listado />
+       <Listado listadoState={listadoState} setListadoState={setListadoState}/>
     </section>
 
     {/* barra lateral */}
     <aside className="lateral">
         <Buscador />
-       <Crear />
+       <Crear setListadoState={setListadoState}/>
     </aside>
 
     {/* pie de pagina */}
