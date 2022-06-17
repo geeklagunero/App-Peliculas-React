@@ -7,6 +7,7 @@ export const GuardarEnLocalStorage = (clave, elemento) => {
 
     console.log(elementos);
     //comporbar si es un array
+    //como el json.parse trasforma como el queire por eso verificamos si es un array
     if(Array.isArray(elementos)){
       elementos.push(elemento);
     } else {
@@ -15,7 +16,7 @@ export const GuardarEnLocalStorage = (clave, elemento) => {
     }
 
     //guaramos en el localStorage
-    //el JSON.stringify convierte un objeto de javascript en un objeto json
+    //el JSON.stringify convierte un objeto o un valor de javascript en un objeto json
     localStorage.setItem(clave, JSON.stringify(elementos));
 
     //devolvemos el objeto guardado

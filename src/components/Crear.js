@@ -35,6 +35,7 @@ export const Crear = ({setListadoState}) => {
     setPelistate(peli);
 
     //actilizar el estado del listado principal
+    //le pasamos el array como parametro para que se actualice y le agregamos la peli que conseguimos por el formulario
     setListadoState(elementos => [...elementos, peli]);
 
     //guardar en el almacenamiento local

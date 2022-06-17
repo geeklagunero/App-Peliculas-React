@@ -10,9 +10,6 @@ function App() {
     //tanto la variable como la funcion que modifica el state
     const [listadoState, setListadoState] = useState([]);
 
-
-
-
   return (
     <div className="layout">
     {/* cabezera */}

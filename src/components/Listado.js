@@ -5,6 +5,8 @@ export const Listado = ({listadoState, setListadoState}) => {
     // const [listadoState, setListadoState] = useState([]);
 
     const conseguirPeliculas = () => {
+        //conseguir los elementos que ya tenemos en el almacenamiento local localStorage
+        //JSON.parse trasforma un objeto json en un objetos de javascript
         let peliculas = JSON.parse(localStorage.getItem("peliculas"));
         setListadoState(peliculas);
     };
