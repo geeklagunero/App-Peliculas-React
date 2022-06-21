@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Editar = ({pelicula, conseguirPeliculas}) => {
+export const Editar = ({pelicula, conseguirPeliculas, setEditar, setListadoState}) => {
 
     const titulo_componente = "Editar pelicula";
 
@@ -23,6 +23,14 @@ export const Editar = ({pelicula, conseguirPeliculas}) => {
 
       //actualizar el objeto pelicula con el indice
       peliculas_lamacenadas[indice] = pelicula_actualizada;
+
+      //guardar el nuevo array de objetos en el localstroage
+      //con el JSON.stringify transformamos el array de objetos a un string json
+      localStorage.setItem("peliculas", JSON.stringify(peliculas_lamacenadas));
+
+      //y actilizar estados
+      setListadoState(peliculas_lamacenadas);
+      setEditar(0);
     };
 
 
